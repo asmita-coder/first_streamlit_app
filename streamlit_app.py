@@ -43,14 +43,6 @@ except URLError as e:
   streamlit.error()
 
 
-
-
-
-
-
-
-
-# 
 # my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 # my_cur = my_cnx.cursor()
 # my_cur.execute("SELECT * FROM fruit_load_list")
@@ -70,7 +62,7 @@ if streamlit.button("Get Fruit Load List"):
 
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
-        my_cur.execute("insert into fruit_load_list values('from streamlit')")
+        my_cur.execute("insert into fruit_load_list values('"+new_fruit+"')")
         return streamlit.write('Thanks for adding ', fruit_choice)
         
 # Add a Text Entry Box and Send the Input to Fruityvice as Part of the API Call
